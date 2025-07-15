@@ -1,0 +1,90 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import Box from "../Box";
+import Text from "../Text";
+import Image from ".";
+
+<Meta title="Atoms/Image" component={Image}/>
+
+# Image
+
+----
+
+## Installation
+
+```jsx
+import Image from "@bit/xto10x.common/Image";
+```
+
+----
+
+### Sizes
+
+
+<Preview>
+  <Story name="Sizes">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+        <Box display="grid" gridAutoFlow="column" gridGap="20px">
+          {["100px", "200px", "300px"].map((size, index) => (
+            <Box>
+              <Image
+                alt="Uchiha"
+                  fallbackSrc=""
+                  objectFit="cover"
+                  src="https://bit.ly/uchiha-itachi"
+                size={size}
+              />
+              <br />
+              <Text type="label">Size: {size}</Text>
+            </Box>
+          ))}
+        </Box>
+    </Box>
+  </Story>
+</Preview>
+
+### Fallback support
+
+
+
+<Preview>
+  <Story name="Fallback support">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+        <Box display="grid" gridAutoFlow="column" gridGap="20px">
+          {["100px", "200px", "300px"].map((size, index) => (
+            <Box>
+              <Image
+                alt="Uchiha"
+                  objectFit="cover"
+                  src="https://bit.ly/uchiha-itach"
+                size={size}
+              />
+              <br />
+              <Text type="label">Size: {size}</Text>
+            </Box>
+          ))}
+        </Box>
+    </Box>
+  </Story>
+</Preview>
+
+#### Note
+Since `Image` is rendered in a `Box`, it is possible to pass to it all the style props applicable to `Box`.
+`Image` allows arbitrary sizes (and other props) based on the assumption that `Image` will almost never be used in isolation and will almost always derive from the parent.
+
+----
+
+# Props
+
+<Props of={Image} />

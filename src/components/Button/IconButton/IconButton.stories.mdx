@@ -1,0 +1,115 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import { add, notification, flash, star } from "../../IconLib";
+import * as stories from "./IconButton.stories.js";
+import IconButton, { iconButtonVariants, iconButtonColors } from "./index";
+
+import Box from "../../Box";
+import Text from "../../Text";
+
+<Meta title="Atoms/Buttons/IconButton" component={IconButton} />
+
+# IconButton
+
+---
+
+## Installation
+
+```jsx
+import { IconButton } from "@bit/xto10x.common/Button";
+```
+
+---
+
+### Colors
+
+The following **colors** are available on **IconButton**
+
+<Preview>
+  <Story name="Colors">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="30px"
+      justifyContent="start"
+    >
+      {iconButtonColors.map(color => (
+        <Box>
+          <IconButton icon={add} color={color}></IconButton>
+          <Text type="label">{color}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+import { add } from "@bit/xto10x.common/IconLib";
+
+<IconButton icon={add} color={color}>
+  Button Text
+</IconButton>;
+```
+
+### Variants
+
+The following **variants** are available on **IconButton**
+
+<Preview>
+  <Story name="Variants">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+    {iconButtonColors.map(color => (
+      <Box>{iconButtonVariants.map(variant => (
+        <Box mb={8}>
+          <IconButton icon={flash} variant={variant} color={color}></IconButton>
+          <Text type="label">{variant}</Text>
+        </Box>
+      ))}
+      </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+import { flash } from "@bit/xto10x.common/IconLib";
+
+<IconButton icon={flash} variant={variant}>
+  Button Text
+</IconButton>;
+```
+
+### Loading state
+
+Set/unset the `isLoading` prop to toggle loading state
+
+<Preview>
+  <Story name="Loading state">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      <IconButton icon={add} isLoading={true}>
+        Button
+      </IconButton>
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+import { add } from "@bit/xto10x.common/IconLib";
+
+<IconButton icon={add} isLoading={true}>
+  Button Text
+</IconButton>;
+```
+
+## Props
+
+<Props of={IconButton} />

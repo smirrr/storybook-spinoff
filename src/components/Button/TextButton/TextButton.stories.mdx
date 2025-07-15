@@ -1,0 +1,176 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import { add, notification } from "../../IconLib";
+import * as stories from "./TextButton.stories.js";
+import TextButton, {
+  textButtonColors,
+  textButtonSizes
+} from "./index";
+
+import Box from "../../Box";
+
+<Meta title="Atoms/Buttons/TextButton" component={TextButton} />
+
+# TextButton
+
+---
+
+## Installation
+
+```jsx
+import { TextButton } from "@bit/xto10x.common/Button";
+```
+
+---
+
+### Colors
+
+The following **colors** are available on **TextButton**
+
+<Preview>
+  <Story name="Colors">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {textButtonColors.map(color => (
+        <TextButton color={color}>{color}</TextButton>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+<TextButton color={color}>Button Text</TextButton>
+```
+
+### Sizes
+
+The following **sizes** are available on **TextButton**
+
+<Preview>
+  <Story name="Sizes">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {textButtonSizes.map(size => (
+        <TextButton size={size}>{size}</TextButton>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+<TextButton size={size}>Button Text</TextButton>
+```
+
+### With left icon
+
+<Preview>
+  <Story name="With left icon">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {textButtonSizes.map(size => (
+        <TextButton leftIcon={add} size={size}>
+          {size}
+        </TextButton>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+import { add } from "@bit/xto10x.common/IconLib";
+
+<TextButton leftIcon={add}>Button Text</TextButton>;
+```
+
+### With right icon
+
+<Preview>
+  <Story name="With right icon">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {textButtonSizes.map(size => (
+        <TextButton color="basic" rightIcon={notification} size={size}>
+          {size}
+        </TextButton>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+import { notification } from "@bit/xto10x.common/IconLib";
+
+<TextButton rightIcon={notification}>Button Text</TextButton>;
+```
+
+### Loading state
+
+Set/unset the `isLoading` prop to toggle loading state
+
+<Preview>
+  <Story name="Loading state">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {textButtonSizes.map(size => (
+        <TextButton isLoading={true} size={size}>
+          Button
+        </TextButton>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+<TextButton isLoading={true}>Button Text</TextButton>
+```
+
+### Loading state with custom loading text
+
+Set the `loadingText` prop to set custom loading text
+_Only works when `isLoading` prop set to true_
+
+<Preview>
+  <Story name="Loading state with custom loading text">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {textButtonSizes.map(size => (
+        <TextButton isLoading={true} loadingText="Loading" size={size}>
+          Button
+        </TextButton>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+<TextButton isLoading={true} loadingText="Loading">
+  Button Text
+</TextButton>
+```
+
+## Props
+
+<Props of={TextButton} />

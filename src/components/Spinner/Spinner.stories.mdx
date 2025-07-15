@@ -1,0 +1,199 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import Box from "../Box";
+import Text from "../Text";
+import Spinner, {availableSizes} from ".";
+import theme from '../theming/defaultTheme';
+const colors = Object.keys(theme.colors).map(color => `${color}.50`);
+const customSpinnerSize = "200px";
+
+<Meta title="Atoms/Spinner" component={Spinner}/>
+
+# Spinner
+
+----
+
+## Installation
+
+```jsx
+import Spinner from "@bit/xto10x.common/Spinner";
+```
+
+----
+
+### Colored Spinners
+
+<Preview>
+  <Story name="Colored">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+      textAlign="center"
+    >
+      {colors.slice(0,6).map((color, index) => (
+        <Box>
+          <Spinner color={color} size="40px" />
+          <br />
+          <br />
+          <Text type="label">{color}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+
+### Available spinner sizes
+
+<Preview>
+  <Story name="Available Spinner Sizes">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+      textAlign="center"
+    >
+      {Object.keys(availableSizes).map((size, index) => (
+        <Box>
+          <Spinner size={size} />
+          <br />
+          <br />
+          <Text type="label">{size}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+
+### Custom spinner sizes
+
+<Preview>
+  <Story name="Custom Sizes">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+      textAlign="center"
+    >
+      {['100px', '10rem'].map((size, index) => (
+        <Box>
+          <Spinner size={size} />
+          <br />
+          <br />
+          <Text type="label">{size}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+### Empty Colors
+
+<Preview>
+  <Story name="Empty Colors">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+      textAlign="center"
+    >
+      {colors.slice(0,6).map((color, index) => (
+        <Box>
+          <Spinner color={color} emptyColor="#dddddd" size="40px" />
+          <br />
+          <br />
+          <Text type="label">{color}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+
+### Speed
+
+<Preview>
+  <Story name="Speed">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+      textAlign="center"
+    >
+      {["0.5s", "1s", "2s", "3s"].map((speed, index) => (
+        <Box>
+          <Spinner speed={speed} size="40px" />
+          <br />
+          <br />
+          <Text type="label">{speed}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+
+### Thickness
+
+<Preview>
+  <Story name="Thickness">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+      textAlign="center"
+    >
+      {["1px", "2px", "4px", "8px"].map((thickness, index) => (
+        <Box>
+          <Spinner thickness={thickness} size="40px" />
+          <br />
+          <br />
+          <Text type="label">{thickness}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+
+### Custom svg
+
+<Preview>
+  <Story name="Custom svg">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+      textAlign="center"
+    >
+      {Object.keys(availableSizes).map((size, index) => (
+          <Box>
+            <Spinner size={size} customSVG="https://loading.io/assets/img/p/landing/comment.svg" />
+            <br />
+            <br />
+            <Text type="label">{size}</Text>
+          </Box>
+        ))}
+    </Box>
+  </Story>
+</Preview>
+
+
+# Props
+
+<Props of={Spinner} />

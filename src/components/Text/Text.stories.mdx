@@ -1,0 +1,79 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import Box from "../Box";
+import Text, {textTypes, variants as textVariants} from ".";
+import theme from '../theming/defaultTheme';
+const colors = Object.keys(theme.colors).map(color => `${color}.50`);
+
+<Meta title="Atoms/Text" component={Text}/>
+
+# Text
+
+----
+
+## Installation
+
+```jsx
+import Text from "@bit/xto10x.common/Text";
+```
+
+----
+
+### Types
+
+The following **types** are available on Text element.
+
+<Preview>
+  <Story name="Types">
+    <Box
+      display="grid"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+        <Box display="grid" gridGap="20px">
+          {textTypes.map((textType, index) => (
+            <Box>
+              <Box border="1px dotted gray">
+                <Text type={textType}>Pack my box with five dozen liquor jugs</Text>
+              </Box>
+              <br/>
+              <Text type="header5"><b>Type</b>: {textType}</Text>
+              <Text type="body"><b>Font size</b>: {textVariants[textType].fontSize}</Text>
+              <Text type="body"><b>Line height</b>: {textVariants[textType].lineHeight}</Text>
+              <hr/>
+            </Box>
+          ))}
+        </Box>
+    </Box>
+  </Story>
+</Preview>
+
+### The color prop
+
+Text can be colored by passing a `color` prop.
+
+<Preview>
+  <Story name="Color prop">
+    <Box
+      display="grid"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+        <Box display="grid" gridGap="20px">
+          {colors.slice(0,6).map((color, index) => (
+            <Box>
+              <Text color={color} type={textTypes[index]}>Pack my box with five dozen liquor jugs</Text>
+              <br />
+              <Text type="header5">Color: {color}</Text>
+              <hr/>
+            </Box>
+          ))}
+        </Box>
+    </Box>
+  </Story>
+</Preview>
+
+# Props
+
+<Props of={Text} />

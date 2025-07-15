@@ -1,0 +1,88 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import Box from "../Box";
+import Text from "../Text";
+import Modal, {ModalBody, ModalFooter} from ".";
+import {SimpleButton as Button} from "../Button";
+
+# Modal
+
+----
+
+## Installation
+
+```jsx
+import Modal from "@bit/xto10x.common/Modal";
+```
+----
+
+#### Default modal
+
+<Preview>
+  <Story id="molecules-modal--default-modal">
+  </Story>
+</Preview>
+
+#### Modal with long text
+
+<Preview>
+  <Story id="molecules-modal--modal-with-long-text">
+  </Story>
+</Preview>
+
+#### Modal with custom title color
+
+<Preview>
+  <Story id="molecules-modal--modal-with-custom-title-color">
+  </Story>
+</Preview>
+
+#### Modal with icon in the title
+
+<Preview>
+  <Story id="molecules-modal--modal-with-icon-in-the-title">
+  </Story>
+</Preview>
+
+#### Modal with custom colored icon in the title
+
+<Preview>
+  <Story id="molecules-modal--modal-with-custom-colored-icon-in-the-title">
+  </Story>
+</Preview>
+
+#### Modal with no close button
+
+<Preview>
+  <Story id="molecules-modal--modal-with-no-close-button">
+  </Story>
+</Preview>
+
+
+#### Modal that can't be closed
+
+<Preview>
+  <Story id="molecules-modal--modal-that-cant-be-closed">
+  </Story>
+</Preview>
+
+
+
+----
+
+
+
+## Props - Modal
+
+<Props of={Modal} />
+
+----
+
+## Props - ModalBody
+
+<Props of={ModalBody} />
+
+----
+
+## Props - ModalFooter
+
+<Props of={ModalFooter} />

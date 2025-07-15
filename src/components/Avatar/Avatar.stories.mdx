@@ -1,0 +1,214 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import Avatar, {
+  AvatarBadge,
+  AvatarName,
+  avatarSizes,
+  avatarShapes,
+} from './index';
+import Box from '../Box';
+import Text from '../Text';
+const exampleNames = [
+  'Deepak Rajanna',
+  'Kavya Soni',
+  'Santhosh Kumar Jayaraman',
+  'Tejasvee',
+];
+
+<Meta title="Molecules/Avatar" component={Avatar} />
+
+# Avatar
+
+---
+
+## Installation
+
+```jsx
+import { Avatar } from '@bit/xto10x.common/Avatar';
+```
+
+---
+
+### Size Variants
+
+The following **sizes** are available on **Avatar**
+
+<Preview>
+  <Story name="Size Variants">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="20px"
+      justifyContent="start"
+      alignItems="end"
+    >
+      {avatarSizes.map((size) => (
+        <Box textAlign="center">
+          <Avatar
+            as={Box}
+            mb="10px"
+            src="https://bit.ly/uchiha-itachi"
+            name="Uchiha Itachi"
+            size={size}
+          />
+          <Text type="button">{size}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+### Shape Variants
+
+The following **sizes** are available on **Avatar**
+
+<Preview>
+  <Story name="Shape Variants">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="20px"
+      justifyContent="start"
+      alignItems="end"
+    >
+      {avatarShapes.map((shape) => (
+        <Box textAlign="center">
+          <Avatar
+            as={Box}
+            mb="10px"
+            src="https://bit.ly/uchiha-itachi"
+            name="Uchiha Itachi"
+            shape={shape}
+          />
+          <Text type="button">{shape}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+### Absence of image `src`
+
+When no `src` is found on Avatar, a color is generated based on the `name` prop.
+The first 1 or 2 initials are shown on this variant (depending on whichever is available)
+
+<Preview>
+  <Story name="With no Image">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="20px"
+      justifyContent="start"
+      alignItems="end"
+    >
+      {avatarSizes.map((size, index) => (
+        <Box textAlign="center">
+          <Avatar as={Box} mb="10px" name={exampleNames[index]} size={size} />
+          <Text type="body">{exampleNames[index]}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+### Absence of image `src` and `name`
+
+When no `src` or `name` is found on Avatar, a fallback SVG icon is rendered.
+
+<Preview>
+  <Story name="With no Image and Name">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="20px"
+      justifyContent="start"
+      alignItems="end"
+    >
+      {avatarSizes.map((size, index) => (
+        <Box textAlign="center">
+          <Avatar as={Box} mb="10px" size={size} />
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+### With badge
+
+A `badgeText` prop can be provided to render a badge. Badges are hidden on sizes `m` and `s`
+
+<Preview>
+  <Story name="With badge">
+    <Box>
+      <Box
+        display="grid"
+        gridAutoFlow="column"
+        gridGap="20px"
+        mb="20px"
+        justifyContent="start"
+        alignItems="end"
+      >
+        {avatarSizes.map((size) => (
+          <Box textAlign="center">
+            <Avatar
+              as={Box}
+              badgeText="Admin"
+              mb="20px"
+              src="https://okr-app-store.s3.ap-south-1.amazonaws.com/org-logo/xto10x-logo.png"
+              size={size}
+              objectFit="contain"
+              border="1px solid #eee"
+            />
+            <Text type="button">{size}</Text>
+          </Box>
+        ))}
+      </Box>
+      <Box
+        display="grid"
+        gridAutoFlow="column"
+        gridGap="20px"
+        mb="20px"
+        justifyContent="start"
+        alignItems="end"
+      >
+        {avatarSizes.map((size) => (
+          <Box textAlign="center">
+            <Avatar
+              as={Box}
+              badgeText="Admin"
+              mb="20px"
+              name="Uchiha Itachi"
+              size={size}
+            />
+            <Text type="button">{size}</Text>
+          </Box>
+        ))}
+      </Box>
+      <Box
+        display="grid"
+        gridAutoFlow="column"
+        gridGap="20px"
+        justifyContent="start"
+        alignItems="end"
+      >
+        {avatarSizes.map((size) => (
+          <Box textAlign="center">
+            <Avatar as={Box} badgeText="Admin" mb="20px" size={size} />
+            <Text type="button">{size}</Text>
+          </Box>
+        ))}
+      </Box>
+    </Box>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={Avatar} />
+
+## Props for AvatarBadge (internal)
+
+<Props of={AvatarBadge} />
+
+## Props for AvatarName (internal)
+
+<Props of={Avatar} />

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16">
+    <path fill="#ADADAE" fill-rule="evenodd" d="M4.5 6L8 2l3.5 4h-7zm7 4L8 14l-3.5-4h7z" clip-rule="evenodd"/>
+    <mask id="ohkw9w1kea" width="8" height="12" x="4" y="2" maskUnits="userSpaceOnUse">
+        <path fill="#fff" fill-rule="evenodd" d="M4.5 6L8 2l3.5 4h-7zm7 4L8 14l-3.5-4h7z" clip-rule="evenodd"/>
+    </mask>
+</svg>

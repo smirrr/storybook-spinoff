@@ -1,0 +1,51 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import Box from '../Box';
+import Stepper from '.';
+const steps = [
+  {
+    id: 'step1',
+    label: 'Step 1 Label'
+  },
+  {
+    id: 'step2',
+    label: 'Step 2 Label'
+  },
+  {
+    id: 'step3',
+    label: 'Step 3 Label'
+  },
+  {
+    id: 'step4',
+    label: 'Step 4 Label'
+  }
+];
+
+<Meta title="Molecules/Stepper" component={Stepper} />
+
+# Stepper
+
+---
+
+## Installation
+
+```jsx
+import Stepper from '@bit/xto10x.common.index/Stepper';
+```
+
+---
+
+### Default
+
+<Preview>
+  <Story name="Default">
+    <Box width= '100%'>
+      <Stepper labels={steps} activeIndex={1} />
+    </Box>
+  </Story>
+</Preview>
+
+---
+
+# Props
+
+<Props of={Stepper} />

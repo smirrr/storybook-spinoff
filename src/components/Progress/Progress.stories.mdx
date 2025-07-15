@@ -1,0 +1,188 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import Box from '../Box';
+import theme from '../theming/defaultTheme';
+import Text from '../Text';
+import Progress, { availableSizes } from '.';
+const colors = Object.keys(theme.colors).map(color => `${color}.50`);
+
+<Meta title="Atoms/Progress" component={Progress} />
+
+# Progress
+
+---
+
+## Installation
+
+```jsx
+import Progress from '@bit/xto10x.common/Progress';
+```
+
+---
+
+### Colored Progress
+
+<Preview>
+  <Story name="Colored Progress">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+      {colors.slice(0, 5).map((color, index) => (
+        <Box>
+          <Progress color={color} size="medium" />
+          <br />
+          <br />
+          <Text type="label">{color}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+### Sizes
+
+<Preview>
+  <Story name="Sizes">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+      {availableSizes.map((size, index) => (
+        <Box>
+          <Progress size={size} />
+          <br />
+          <br />
+          <Text type="label">{size}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+### Values
+
+<Preview>
+  <Story name="Values">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+      {Array.from({ length: 10 }, () => Math.floor(Math.random() * 99)).map(
+        (value, index) => (
+          <Box>
+            <Progress size="small" value={value} />
+            <br />
+            <Text type="label">{value}%</Text>
+          </Box>
+        )
+      )}
+    </Box>
+  </Story>
+</Preview>
+
+### Custom min/max
+
+<Preview>
+  <Story name="Custom min/max">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+      <Box>
+        <Progress size="small" value={20} min={10} max={50} />
+        <br />
+        <Text type="label">
+          value:{20} | min:{10} | max:{50}
+        </Text>
+      </Box>
+      <Box>
+        <Progress size="small" value={20} min={5} max={25} />
+        <br />
+        <Text type="label">
+          value:{20} | min:{5} | max:{25}
+        </Text>
+      </Box>
+    </Box>
+  </Story>
+</Preview>
+
+### Gradient Bar
+
+<Preview>
+  <Story name="Gradient Bars">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+      <Box>
+        <Progress
+          size="large"
+          width="100px"
+          value={8}
+          min={0}
+          max={10}
+          gradientColorsType="positive"
+        />
+        <br />
+        <Text type="label">positive</Text>
+      </Box>
+      <Box>
+        <Progress
+          size="large"
+          width="100px"
+          value={3}
+          min={0}
+          max={10}
+          gradientColorsType="negative"
+        />
+        <br />
+        <Text type="label">negative</Text>
+      </Box>
+      <Box>
+        <Progress
+          size="large"
+          width="100px"
+          value={7}
+          min={0}
+          max={10}
+          gradientColorsType="neutral"
+        />
+        <br />
+        <Text type="label">neutral</Text>
+      </Box>
+      <Box>
+        <Progress
+          size="large"
+          width="100px"
+          value={15}
+          min={5}
+          max={25}
+          gradientColors={['red', 'yellow', 'green']}
+        />
+        <br />
+        <Text type="label">Custom color</Text>
+      </Box>
+    </Box>
+  </Story>
+</Preview>
+
+---
+
+# Props
+
+<Props of={Progress} />

@@ -1,0 +1,347 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import Box from '../Box';
+import Text from '../Text';
+import { close } from '../IconLib';
+import { Input, TextArea } from '.';
+import FormControl from '../FormControl';
+import FormLabel from '../FormLabel';
+import { SimpleButton as Button } from '../Button';
+import FormErrorMessage from '../FormErrorMessage';
+import { Field, Form, Formik, FormikProps } from 'formik';
+import validator from 'validator';
+const validateEmail = str => {
+  let error;
+  if (validator.isEmpty(str)) {
+    error = 'Email is required';
+  } else if (!validator.isEmail(str)) {
+    error = 'Email is not valid';
+  }
+  return error;
+};
+const validateSub300CharText = str => {
+  let error;
+  if (validator.isEmpty(str)) {
+    error = 'Text is required';
+  } else if (!validator.isLength(str, { min: 0, max: 300 })) {
+    error = `-${str.length - 300}`;
+  }
+  return error;
+};
+
+<Meta title="Atoms/Inputs" component={Input} />
+
+# Input
+
+---
+
+## Installation
+
+```jsx
+import { Input } from '@bit/xto10x.common/Input';
+```
+
+---
+
+### Variants
+
+<Preview>
+  <Story name="Input Variants">
+    <Box maxWidth="200px">
+      <FormControl>
+        <Input label="Input Label" variant="basic" />
+      </FormControl>
+      <br />
+      <Text type="label">Variant: basic</Text>
+      <br />
+      <br />
+      <FormControl>
+        <Input placeholder="Input Label" variant="withIcon" icon={close} />
+      </FormControl>
+      <br />
+      <Text type="label">Variant: withIcon (left)</Text>
+      <br />
+      <FormControl>
+        <Input
+          placeholder="Input Label"
+          variant="withIcon"
+          icon={close}
+          height="40px"
+          iconSize="32px"
+          onIconClick={() => console.log('input icon clicked')}
+          iconOrientation="right"
+        />
+      </FormControl>
+      <br />
+      <Text type="label">Variant: withIcon (right)</Text>
+      <br />
+      <FormControl isRequired>
+        <FormLabel>Label</FormLabel>
+        <Input variant="withoutLabel" rows="4" placeholder="Enter text" />
+      </FormControl>
+      <br />
+      <Text type="label">Variant: withoutLabel</Text>
+      <br />
+    </Box>
+  </Story>
+</Preview>
+
+### Disabled state
+
+<Preview>
+  <Story name="Input Disabled state">
+    <Box maxWidth="200px">
+      <FormControl isDisabled>
+        <Input label="Input Label" variant="basic" />
+      </FormControl>
+      <br />
+      <Text type="label">Variant: basic</Text>
+      <br />
+      <br />
+      <FormControl isDisabled>
+        <Input placeholder="Input Label" variant="withIcon" icon={close} />
+      </FormControl>
+      <br />
+      <Text type="label">Variant: withIcon</Text>
+    </Box>
+  </Story>
+</Preview>
+
+### Filled state
+
+<Preview>
+  <Story name="Input Filled state">
+    <Box maxWidth="200px">
+      <FormControl value="Some input value">
+        <Input label="Input Label" variant="basic" />
+      </FormControl>
+      <br />
+      <Text type="label">Variant: basic</Text>
+      <br />
+      <br />
+      <FormControl value="Some input value">
+        <Input placeholder="Input Label" variant="withIcon" icon={close} />
+      </FormControl>
+      <br />
+      <Text type="label">Variant: withIcon</Text>
+      <br />
+      <br />
+      <FormControl isDisabled value="Some input value">
+        <Input label="Input Label" variant="basic" />
+      </FormControl>
+      <br />
+      <Text type="label">Variant: basic</Text>
+      <br />
+      <br />
+      <FormControl isDisabled value="Some input value">
+        <Input placeholder="Input Label" variant="withIcon" icon={close} />
+      </FormControl>
+      <br />
+      <Text type="label">Variant: withIcon</Text>
+    </Box>
+  </Story>
+</Preview>
+
+### Required state
+
+<Preview>
+  <Story name="Input Required state">
+    <Box maxWidth="200px">
+      <FormControl isRequired value="Some input value">
+        <Input label="Input Label" variant="basic" />
+      </FormControl>
+      <br />
+      <br />
+      <FormControl isRequired value="Some input value">
+        <FormLabel>Label</FormLabel>
+        <Input placeholder="Input Label" variant="withIcon" icon={close} />
+      </FormControl>
+      <br />
+      <br />
+      <FormControl isRequired isDisabled value="Some input value">
+        <Input label="Input Label" variant="basic" />
+      </FormControl>
+      <br />
+      <br />
+      <FormControl isRequired isDisabled value="Some input value">
+        <FormLabel>Label</FormLabel>
+        <Input placeholder="Input Label" variant="withIcon" icon={close} />
+      </FormControl>
+      <br />
+    </Box>
+  </Story>
+</Preview>
+
+### Invalid state
+
+<Preview>
+  <Story name="Input Invalid state">
+    <Box maxWidth="200px">
+      <FormControl isRequired isInvalid value="Some input value">
+        <Input label="Input Label" variant="basic" />
+      </FormControl>
+      <br />
+      <br />
+      <FormControl isRequired isInvalid value="Some input value">
+        <FormLabel>Label</FormLabel>
+        <Input placeholder="Input Label" variant="withIcon" icon={close} />
+      </FormControl>
+      <br />
+      <br />
+      <FormControl isRequired isInvalid isDisabled value="Some input value">
+        <Input label="Input Label" variant="basic" />
+      </FormControl>
+      <br />
+      <br />
+      <FormControl isRequired isInvalid isDisabled value="Some input value">
+        <FormLabel>Label</FormLabel>
+        <Input placeholder="Input Label" variant="withIcon" icon={close} />
+      </FormControl>
+      <br />
+    </Box>
+  </Story>
+</Preview>
+
+### With Live Form Validation using `Formik`
+
+<Preview>
+  <Story name="Input Form Validation">
+    <Formik
+      initialValues={{ email: 'm' }}
+      onSubmit={(values, actions) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          actions.setSubmitting(false);
+        }, 1000);
+      }}
+      render={props => (
+        <form onSubmit={props.handleSubmit}>
+          <Field
+            name="email"
+            validate={validateEmail}
+            render={({ field, form }) => (
+              <FormControl
+                {...field}
+                isRequired
+                isInvalid={form.errors.email && form.touched.email}
+              >
+                <Input id="email" label="Email" />
+                <FormErrorMessage>{form.errors.email}</FormErrorMessage>
+              </FormControl>
+            )}
+          />
+          <Button mt={4} isLoading={props.isSubmitting}>
+            Submit
+          </Button>
+        </form>
+      )}
+    />
+  </Story>
+</Preview>
+
+---
+
+# Input Props
+
+<Props of={Input} />
+
+---
+
+# TextArea
+
+---
+
+## Installation
+
+```jsx
+import { TextArea } from '@bit/xto10x.common/Input';
+```
+
+---
+
+### TextArea
+
+<Preview>
+  <Story name="TextArea">
+    <Box display="grid" gridGap="30px" justifyContent="start" alignItems="end">
+      <Box display="grid" gridAutoFlow="column" gridGap="20px">
+        <Box>
+          <FormControl>
+            <TextArea rows="4" placeholder="Enter text" />
+          </FormControl>
+          <br />
+          <FormControl isRequired>
+            <FormLabel>Label</FormLabel>
+            <TextArea rows="4" placeholder="Enter text" />
+          </FormControl>
+          <br />
+          <FormControl isInvalid isRequired>
+            <FormLabel>Label</FormLabel>
+            <TextArea rows="4" placeholder="Enter text" />
+          </FormControl>
+          <br />
+          <FormControl isDisabled>
+            <FormLabel>Label</FormLabel>
+            <TextArea rows="4" placeholder="Enter text" />
+          </FormControl>
+          <br />
+          <FormControl>
+            <FormLabel>Label</FormLabel>
+            <TextArea rows="8" placeholder="Enter text" />
+          </FormControl>
+          <br />
+          <Text type="label">(with custom rows)</Text>
+        </Box>
+      </Box>
+    </Box>
+  </Story>
+</Preview>
+
+### TextArea With Live Form Validation using `Formik`
+
+Enter text >300 chars to check errors (or hit submit with default text)
+
+<Preview>
+  <Story name="TextArea Form Validation">
+    <Formik
+      initialValues={{
+        text:
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque interdum nisi eget felis sollicitudin dictum. Nam id odio dignissim orci efficitur mollis non nec sapien. Nunc ullamcorper tincidunt sem, id posuere velit. Quisque id eros a dolor fringilla semper. Class aptent taciti sociosqu ad litora torquent.'
+      }}
+      onSubmit={(values, actions) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          actions.setSubmitting(false);
+        }, 1000);
+      }}
+      render={props => (
+        <form onSubmit={props.handleSubmit}>
+          <Field
+            name="text"
+            validate={validateSub300CharText}
+            render={({ field, form }) => (
+              <FormControl
+                {...field}
+                isRequired
+                isInvalid={form.errors.text && form.touched.text}
+              >
+                <TextArea rows="7" id="text" placeholder="Long Text" />
+                <FormErrorMessage textAlign="right">
+                  {form.errors.text}
+                </FormErrorMessage>
+              </FormControl>
+            )}
+          />
+          <Button mt={4} isLoading={props.isSubmitting}>
+            Submit
+          </Button>
+        </form>
+      )}
+    />
+  </Story>
+</Preview>
+
+---
+
+# TextArea Props
+
+<Props of={TextArea} />

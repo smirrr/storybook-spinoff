@@ -1,0 +1,89 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import * as Icons from '../IconLib';
+import Box from "../Box";
+import Text from "../Text";
+import Icon, {iconSizes} from ".";
+import theme from '../theming/defaultTheme';
+const IconComponents = Object.keys(Icons).map(name => Icons[name]);
+const colors = Object.keys(theme.colors).map(color => `${color}.50`);
+const customIconSize = "200px";
+
+<Meta title="Atoms/Icon" component={Icon}/>
+
+# Icon
+
+----
+
+## Installation
+
+```jsx
+import Icon from "@bit/xto10x.common/Icon";
+```
+
+----
+
+### Colored Icons
+
+<Preview>
+  <Story name="Colored Icons">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+        <Box display="grid" gridAutoFlow="column" gridGap="20px">
+          {IconComponents.slice(0, 6).map((icon, index) => (
+            <Box>
+              <Icon color={colors[index]} icon={icon} size="icons.l" />
+              <br />
+              <br />
+              <Text type="label">{colors[index]}</Text>
+            </Box>
+          ))}
+        </Box>
+    </Box>
+  </Story>
+</Preview>
+
+### Icon sizes
+
+<Preview>
+  <Story name="Sizes">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+        <Box display="grid"
+        gridAutoFlow="column"
+         gridGap="20px"
+         justifyContent="start"
+               alignItems="end" textAlign="center">
+          {iconSizes.map((size, index) => (
+            <Box>
+              <Icon size={size} icon={IconComponents[0]} />
+              <br />
+              <br />
+              <Text type="label">{size}</Text>
+            </Box>
+          ))}
+          <Box>
+            <Icon size={customIconSize} icon={IconComponents[0]}/>
+            <br />
+            <br />
+            <Text type="label">Custom size: {customIconSize}</Text>
+          </Box>
+        </Box>
+    </Box>
+  </Story>
+</Preview>
+
+----
+
+# Props
+
+<Props of={Icon} />

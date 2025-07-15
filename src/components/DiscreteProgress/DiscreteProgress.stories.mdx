@@ -1,0 +1,122 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import Box from '../Box';
+import theme from '../theming/defaultTheme';
+import Text from '../Text';
+import DiscreteProgress, { availableSizes } from '.';
+
+<Meta title="Molecules/DiscreteProgress" component={DiscreteProgress} />
+
+# DiscreteProgress
+
+---
+
+## Installation
+
+```jsx
+import DiscreteProgress from '@bit/xto10x.common/DiscreteProgress';
+```
+
+---
+
+<Preview>
+  <Story name="Colored DiscreteProgress">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+      {colors.slice(0, 5).map((color, index) => (
+        <Box>
+          <DiscreteProgress steps={7} value={3} color={color} size="medium" />
+          <br />
+          <br />
+          <Text type="label">Color: {color}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+### Sizes
+
+<Preview>
+  <Story name="Sizes">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+      {availableSizes.map((size, index) => (
+        <Box>
+          <DiscreteProgress steps={7} value={3} size={size} />
+          <br />
+          <br />
+          <Text type="label">{size}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+### Values
+
+<Preview>
+  <Story name="Values">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+      {Array.from({ length: 10 }, () => Math.floor(Math.random() * 9)).map(
+        (value, index) => (
+          <Box>
+            <DiscreteProgress size="small" value={value} />
+            <br />
+            <Text type="label">{value}</Text>
+          </Box>
+        ),
+      )}
+    </Box>
+  </Story>
+</Preview>
+
+### No. of steps
+
+<Preview>
+  <Story name="Custom no. of steps">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+      <Box>
+        <DiscreteProgress size="small" value={2} steps={9} />
+        <br />
+        <Text type="label">
+          value:{2} | steps:{9}
+        </Text>
+      </Box>
+      <Box>
+        <DiscreteProgress size="small" value={2} steps={4} />
+        <br />
+        <Text type="label">
+          value:{2} | steps:{4}
+        </Text>
+      </Box>
+    </Box>
+  </Story>
+</Preview>
+
+---
+
+# Props
+
+<Props of={DiscreteProgress} />

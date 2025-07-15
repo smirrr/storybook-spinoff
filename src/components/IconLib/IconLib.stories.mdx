@@ -1,0 +1,44 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import * as IconLib from './index';
+import Box from "../Box";
+import Text from "../Text";
+import Icon from "../Icon";
+
+<Meta title="Tokens/IconLib" component={IconLib}/>
+
+# IconLib
+
+#### Note - this is just the Icon Library. To render icons, you will need to use the `Icon` component.
+
+----
+
+## Installation
+
+```jsx
+import { [icon_name] } from "@bit/xto10x.common/IconLib";
+```
+
+----
+
+The following icons are available in the Icon Library
+
+<Preview>
+  <Story name="Icons">
+    <Box
+      display="grid"
+      gridTemplateColumns="repeat(auto-fill, minmax(150px, 1fr))"
+      gridGap="30px"
+      justifyContent="start"
+      alignItems="end"
+    >
+      {Object.keys(IconLib).sort().map(iconName => (
+        <Box textAlign="center" bg="basic.90" p="10px">
+          <Box mb="10px">
+            <Icon size="40px" icon={IconLib[iconName]}></Icon>
+          </Box>
+          <Text type="body">{iconName}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>

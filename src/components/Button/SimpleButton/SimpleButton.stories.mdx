@@ -1,0 +1,200 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import { add, notification } from "../../IconLib";
+import * as stories from "./SimpleButton.stories.js";
+import SimpleButton, {
+  simpleButtonVariants,
+  simpleButtonColors,
+  simpleButtonSizes
+} from "./index";
+
+import Box from "../../Box";
+
+<Meta title="Atoms/Buttons/SimpleButton" component={SimpleButton} />
+
+# SimpleButton
+
+---
+
+## Installation
+
+```jsx
+import { SimpleButton } from "@bit/xto10x.common/Button";
+```
+
+---
+
+### Colors
+
+The following **colors** are available on **SimpleButton**
+
+<Preview>
+  <Story name="Colors">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {simpleButtonColors.map(color => (
+        <SimpleButton color={color}>{color}</SimpleButton>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+<SimpleButton color={color}>Button Text</SimpleButton>
+```
+
+### Sizes
+
+The following **sizes** are available on **SimpleButton**
+
+<Preview>
+  <Story name="Sizes">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {simpleButtonSizes.map(size => (
+        <SimpleButton size={size}>{size}</SimpleButton>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+<SimpleButton size={size}>Button Text</SimpleButton>
+```
+
+### Variants
+
+The following **variants** are available on **SimpleButton**
+
+<Preview>
+  <Story name="Variants">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {simpleButtonVariants.map(variant => (
+        <SimpleButton variant={variant}>{variant}</SimpleButton>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+<SimpleButton variant={variant}>Button Text</SimpleButton>
+```
+
+### With left icon
+
+<Preview>
+  <Story name="With left icon">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {simpleButtonSizes.map(size => (
+        <SimpleButton leftIcon={add} size={size}>
+          {size}
+        </SimpleButton>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+import { add } from "@bit/xto10x.common/IconLib";
+
+<SimpleButton leftIcon={add}>Button Text</SimpleButton>;
+```
+
+### With right icon
+
+<Preview>
+  <Story name="With right icon">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {simpleButtonSizes.map(size => (
+        <SimpleButton color="basic" rightIcon={notification} size={size}>
+          {size}
+        </SimpleButton>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+import { notification } from "@bit/xto10x.common/IconLib";
+
+<SimpleButton rightIcon={notification}>Button Text</SimpleButton>;
+```
+
+### Loading state
+
+Set/unset the `isLoading` prop to toggle loading state
+
+<Preview>
+  <Story name="Loading state">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {simpleButtonSizes.map(size => (
+        <SimpleButton isLoading={true} size={size}>
+          Button
+        </SimpleButton>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+<SimpleButton isLoading={true}>Button Text</SimpleButton>
+```
+
+### Loading state with custom loading text
+
+Set the `loadingText` prop to set custom loading text
+_Only works when `isLoading` prop set to true_
+
+<Preview>
+  <Story name="Loading state with custom loading text">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {simpleButtonSizes.map(size => (
+        <SimpleButton isLoading={true} loadingText="Loading" size={size}>
+          Button
+        </SimpleButton>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+```jsx
+<SimpleButton isLoading={true} loadingText="Loading">
+  Button Text
+</SimpleButton>
+```
+
+## Props
+
+<Props of={SimpleButton} />

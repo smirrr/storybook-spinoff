@@ -1,0 +1,128 @@
+import { Meta, Story, Preview, Props } from "@storybook/addon-docs/blocks";
+import { add, notification, flash, star } from "../../IconLib";
+import * as stories from "./DropdownButton.stories.js";
+import DropdownButton, { dropdownButtonVariants, dropdownButtonSizes } from "./index";
+
+import Box from "../../Box";
+import Text from "../../Text";
+
+<Meta title="Atoms/Buttons/DropdownButton" component={DropdownButton} />
+
+# DropdownButton
+
+---
+
+## Installation
+
+```jsx
+import { DropdownButton } from "@bit/xto10x.common/Button";
+```
+
+---
+
+### Sizes
+
+The following **sizes** are available on **DropdownButton**
+
+<Preview>
+  <Story name="Sizes">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="30px"
+      justifyContent="start"
+    >
+      {dropdownButtonSizes.map(size => (
+        <Box>
+          <DropdownButton size={size}>Button</DropdownButton>
+          <Text mt={2} type="label">{size}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+### Variants
+
+The following **variants** are available on **DropdownButton**
+
+<Preview>
+  <Story name="Variants">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {dropdownButtonVariants.map(variant => (
+        <Box>
+          <DropdownButton icon={flash} variant={variant}>Button</DropdownButton>
+          <Text mt={2} type="label">{variant}</Text>
+        </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+### With Badge
+
+<Preview>
+  <Story name="With badge">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {dropdownButtonSizes.map(size => (
+          <Box>
+            <DropdownButton size={size} badgeCount={20}>Button</DropdownButton>
+            <Text mt={2} type="label">{size}</Text>
+          </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+### With Badge count 100+
+
+<Preview>
+  <Story name="With badge count 100+">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      {dropdownButtonSizes.map(size => (
+          <Box>
+            <DropdownButton size={size} badgeCount={200}>Button</DropdownButton>
+            <Text mt={2} type="label">{size}</Text>
+          </Box>
+      ))}
+    </Box>
+  </Story>
+</Preview>
+
+### Loading state
+
+Set/unset the `isLoading` prop to toggle loading state
+
+<Preview>
+  <Story name="Loading state">
+    <Box
+      display="grid"
+      gridAutoFlow="column"
+      gridGap="10px"
+      justifyContent="start"
+    >
+      <DropdownButton isLoading={true}>
+        Button
+      </DropdownButton>
+    </Box>
+  </Story>
+</Preview>
+
+## Props
+
+<Props of={DropdownButton} />
