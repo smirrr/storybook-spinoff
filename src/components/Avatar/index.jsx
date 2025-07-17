@@ -2,10 +2,10 @@
 // TODO: Prevent prop-spreading
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useAvatarStyle, getInitials } from './utils';
-import { useHasImageLoaded } from '../Image/index';
-import Box from '../Box';
-import Text from '../Text';
+import { useAvatarStyle, getInitials } from './utils.js';
+import { useHasImageLoaded } from '../Image/index.jsx';
+import Box from '../Box/index.js';
+import Text from '../Text/index.jsx';
 
 export const avatarSizes = ['xl', 'x', 'l', 'm', 's', 'XL', 'X', 'L', 'M', 'S'];
 export const avatarShapes = ['square', 'circle'];

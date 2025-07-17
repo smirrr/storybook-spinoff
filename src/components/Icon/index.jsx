@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Box from '../Box';
-import defaultTheme from '../theming/defaultTheme';
+import Box from '../Box/index.js';
+import defaultTheme from '../theming/defaultTheme.js';
 
 export const iconSizes = Object.keys(defaultTheme.sizes.icons).map(
   size => `icons.${size}`

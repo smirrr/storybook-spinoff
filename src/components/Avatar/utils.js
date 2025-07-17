@@ -1,5 +1,5 @@
 /* eslint-disable no-plusplus,no-bitwise */
-import { useTheme } from "../theming";
+import { useTheme } from "../theming/index.jsx";
 
 function string2Hex(str) {
   let hash = 0;

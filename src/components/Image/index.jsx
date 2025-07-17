@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions,react/prop-types,react/jsx-props-no-spreading */
 import React, { useEffect, useState, forwardRef, useRef } from 'react';
 import PropTypes from 'prop-types';
-import Box from '../Box';
+import Box from '../Box/index.js';
 
 export const useHasImageLoaded = ({ src, onLoad, onError }) => {
   const isMounted = useRef(true);

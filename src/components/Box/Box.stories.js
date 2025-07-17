@@ -1,4 +1,4 @@
-import Box from "./index";
+import Box from "./index.js";
 
 export default {
   title: "Atoms/Box",

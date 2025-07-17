@@ -5,8 +5,8 @@
  * This should ideally follow conventions from https://system-ui.com/theme/
  */
 
-import { borders, radii } from "./modules/borders";
-import { colors } from "./modules/colors";
+import { borders, radii } from "./modules/borders.js";
+import { colors } from "./modules/colors.js";
 
 const fontSizes = [10, 12, 14, 16, 20, 24, 32, 40, 56];
 // Aliasing

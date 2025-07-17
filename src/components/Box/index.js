@@ -12,7 +12,7 @@ import {
   typography,
   compose,
 } from "styled-system";
-import extraConfig from "./config";
+import extraConfig from "./config.js";
 
 const systemProps = compose(
   layout,

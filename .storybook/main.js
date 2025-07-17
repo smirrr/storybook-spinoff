@@ -10,10 +10,8 @@ const config = {
       options: { configureJSX: true },
     },
     "@chromatic-com/storybook",
-    " @storybook/addon-actions",
     "@storybook/addon-onboarding",
     "@storybook/addon-a11y",
-    "@storybook/test",
     "@storybook/addon-vitest",
   ],
   framework: {

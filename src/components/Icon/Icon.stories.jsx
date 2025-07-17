@@ -2,8 +2,8 @@ import React from 'react';
 // Remove: import { select } from '@storybook/addon-knobs'; // NO LONGER NEEDED!
 
 import Icon from '.'; // Assuming '.' refers to the Icon component itself
-import * as Icons from '../IconLib'; // Import all icons
-import theme from '../theming/defaultTheme'; // Import your theme
+import * as Icons from '../IconLib/index.js'; // Import all icons
+import theme from '../theming/defaultTheme.js'; // Import your theme
 
 export default {
   title: 'Atoms/Icon',

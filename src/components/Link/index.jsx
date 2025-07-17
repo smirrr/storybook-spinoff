@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
-import PseudoBox from '../PseudoBox';
+import PseudoBox from '../PseudoBox/index.js';
 
 const baseStyleProps = {
   transition: 'all 0.15s ease-out',

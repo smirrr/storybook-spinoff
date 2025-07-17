@@ -1,6 +1,4 @@
-import { fn } from "storybook/test";
-
-import PseudoBox from "./index";
+import PseudoBox from "./index.js";
 
 export default {
   title: "Atoms/PseudoBox",
@@ -8,18 +6,15 @@ export default {
   parameters: {
     layout: "centered",
   },
-
   tags: ["autodocs"],
-
   argTypes: {
     backgroundColor: { control: "color" },
   },
-
   args: {
     background: "lightgrey",
     padding: "20px",
     borderRadius: "10px",
-    onClick: fn(),
+    onClick: () => {}, // <-- Replaced fn() with empty arrow function
   },
 };
 

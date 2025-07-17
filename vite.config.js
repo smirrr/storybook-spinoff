@@ -16,19 +16,31 @@ const dirname =
 export default defineConfig({
   plugins: [
     react({
-      // This line tells @vitejs/plugin-react to process .js files as JSX
-      // It's crucial when your Storybook stories (or other React files)
-      // use the .js extension but contain JSX.
       include: "**/*.{js,jsx,ts,tsx}",
     }),
     svgr(),
   ],
-  // Add this section to explicitly configure esbuild loaders
   optimizeDeps: {
     esbuildOptions: {
       loader: {
-        // Treat .js files as JSX
         ".js": "jsx",
+      },
+    },
+  },
+  build: {
+    lib: {
+      entry: path.resolve(dirname, "src/components/index.js"),
+      name: "StorybookSpinoff",
+      formats: ["es", "cjs"],
+      fileName: (format) => `storybook-spinoff.${format}.js`,
+    },
+    rollupOptions: {
+      external: ["react", "react-dom"], // don't bundle React
+      output: {
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
+        },
       },
     },
   },

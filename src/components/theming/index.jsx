@@ -4,7 +4,7 @@ import {
   ThemeProvider as StyledThemeProvider,
   ThemeContext,
 } from "styled-components";
-import defaultTheme from "./defaultTheme";
+import defaultTheme from "./defaultTheme.js";
 
 /**
  * Get ThemeProvider with default theme applied

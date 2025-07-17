@@ -1,4 +1,4 @@
-import Link from "./index";
+import Link from "./index.jsx";
 
 export default {
   title: "Atoms/Link",
